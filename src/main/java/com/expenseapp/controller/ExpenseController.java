@@ -1,12 +1,21 @@
 package com.expenseapp.controller;
 
+import com.expenseapp.model.Expense;
+import com.expenseapp.service.ExpenseService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class ExpenseController {
+
+    @Autowired
+    private ExpenseService expenseService;
+
     @GetMapping("/expenses")
-    public String getAllExpenses() {
-        return "List all expenses";
+    public List<Expense> getAllExpenses() {
+        return expenseService.getAllExpenses();
     }
 }
