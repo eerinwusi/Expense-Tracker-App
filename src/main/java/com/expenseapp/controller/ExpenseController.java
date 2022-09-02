@@ -31,9 +31,9 @@ public class ExpenseController {
         return "Expense object has been deleted";
     }
 
-//    @PostMapping("/saveExpense")
-//    public String saveExpense(@RequestBody Expense expense) {
-//        expenseService.saveExpense(expense);
-//        return "Expense object has been saved successfully";
-//    }
+    @PostMapping("/saveExpense")
+    public String saveExpense(@RequestBody Expense expense) {
+        expenseService.saveExpense(expense);
+        return "Expense object has been saved successfully";
+    }
 }
