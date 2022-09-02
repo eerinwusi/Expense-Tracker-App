@@ -20,13 +20,20 @@ public class ExpenseController {
 
 //    using path variable
     @GetMapping("/expenses/{id}")
-    public String getExpenseById(@PathVariable("id") Long id) {
-        return "The expense is " + id;
+    public Expense getExpenseById(@PathVariable("id") Long id) {
+        return expenseService.getExpenseById(id);
     }
 
-//    using request param.
-    @DeleteMapping("/expenses")
-    public String deleteExpenseById(@RequestParam("id") Long id) {
-        return "Delete object with id - " + id;
-    }
+////    using request param
+//    @DeleteMapping("/expenses")
+//    public String deleteExpenseById(@RequestParam("id") Long id) {
+//        expenseService.deleteExpenseById(id);
+//        return "Expense object has been deleted";
+//    }
+//
+//    @PostMapping("/saveExpense")
+//    public String saveExpense(@RequestBody Expense expense) {
+//        expenseService.saveExpense(expense);
+//        return "Expense object has been saved successfully";
+//    }
 }
