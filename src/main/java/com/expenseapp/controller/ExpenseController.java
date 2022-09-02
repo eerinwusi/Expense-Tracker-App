@@ -36,4 +36,9 @@ public class ExpenseController {
         expenseService.saveExpense(expense);
         return "Expense object has been saved successfully";
     }
+
+    @PutMapping("/updateExpense/{id}")
+    public Expense updateExpense(@RequestBody Expense expense, @PathVariable("id") Long id) {
+        return expenseService.updateExpenseDetails(expense, id);
+    }
 }
