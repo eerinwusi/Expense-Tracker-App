@@ -32,9 +32,8 @@ public class ExpenseController {
     }
 
     @PostMapping("/saveExpense")
-    public String saveExpense(@RequestBody Expense expense) {
-        expenseService.saveExpense(expense);
-        return "Expense object has been saved successfully";
+    public Expense saveExpense(@RequestBody Expense expense) {
+        return expenseService.saveExpense(expense);
     }
 
     @PutMapping("/updateExpense/{id}")
