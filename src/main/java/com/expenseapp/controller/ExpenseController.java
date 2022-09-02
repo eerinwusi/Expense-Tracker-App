@@ -3,6 +3,7 @@ package com.expenseapp.controller;
 import com.expenseapp.model.Expense;
 import com.expenseapp.service.ExpenseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,18 +20,21 @@ public class ExpenseController {
     }
 
 //    using path variable
+//    no need to add http status code here since postman automatically returns 200 already.
     @GetMapping("/expenses/{id}")
     public Expense getExpenseById(@PathVariable("id") Long id) {
         return expenseService.getExpenseById(id);
     }
 
 //    using request param
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
     @DeleteMapping("/expenses")
     public String deleteExpenseById(@RequestParam("id") Long id) {
         expenseService.deleteExpenseById(id);
         return "Expense object has been deleted";
     }
 
+    @ResponseStatus(value = HttpStatus.CREATED)
     @PostMapping("/saveExpense")
     public Expense saveExpense(@RequestBody Expense expense) {
         return expenseService.saveExpense(expense);
