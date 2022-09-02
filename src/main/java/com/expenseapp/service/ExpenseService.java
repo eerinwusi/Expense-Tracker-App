@@ -9,7 +9,7 @@ public interface ExpenseService {
 
     Expense getExpenseById(Long id);
 
-//    void deleteExpenseById(Long id);
-//
+    void deleteExpenseById(Long id);
+
 //    Expense saveExpense(Expense expense);
 }

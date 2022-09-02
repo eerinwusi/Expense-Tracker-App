@@ -27,17 +27,17 @@ public class ExpenseServiceImpl implements ExpenseService {
         throw new RuntimeException("The expense object is not found with id "+id);
     }
 
-//    @Override
-//    public void deleteExpenseById(Long id) {
-//        Optional<Expense> expense = expenseRepository.findById(id);
-//        if (expense.isPresent()) {
-//            expenseRepository.deleteById(id);
-//        }
-//        else {
-//            throw new RuntimeException("The expense object with id "+id +" " + "cannot be found");
-//        }
-//
-//    }
+    @Override
+    public void deleteExpenseById(Long id) {
+        Optional<Expense> expense = expenseRepository.findById(id);
+        if (expense.isPresent()) {
+            expenseRepository.deleteById(id);
+        }
+        else {
+            throw new RuntimeException("The expense object with id "+id +" " + "cannot be found");
+        }
+
+    }
 //
 //    @Override
 //    public Expense saveExpense(Expense expense) {

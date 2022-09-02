@@ -24,13 +24,13 @@ public class ExpenseController {
         return expenseService.getExpenseById(id);
     }
 
-////    using request param
-//    @DeleteMapping("/expenses")
-//    public String deleteExpenseById(@RequestParam("id") Long id) {
-//        expenseService.deleteExpenseById(id);
-//        return "Expense object has been deleted";
-//    }
-//
+//    using request param
+    @DeleteMapping("/expenses")
+    public String deleteExpenseById(@RequestParam("id") Long id) {
+        expenseService.deleteExpenseById(id);
+        return "Expense object has been deleted";
+    }
+
 //    @PostMapping("/saveExpense")
 //    public String saveExpense(@RequestBody Expense expense) {
 //        expenseService.saveExpense(expense);
