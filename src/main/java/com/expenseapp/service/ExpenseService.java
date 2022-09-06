@@ -4,6 +4,7 @@ import com.expenseapp.model.Expense;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.sql.Date;
 import java.util.List;
 
 public interface ExpenseService {
@@ -20,4 +21,6 @@ public interface ExpenseService {
     List<Expense> readByCategory(String category, Pageable page);
 
     List<Expense> readByName(String keyword, Pageable page);
+
+    List<Expense> readByDate(Date startDate, Date endDate, Pageable page);
 }
