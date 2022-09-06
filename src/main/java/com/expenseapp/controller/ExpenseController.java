@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -38,7 +39,7 @@ public class ExpenseController {
 
     @ResponseStatus(value = HttpStatus.CREATED)
     @PostMapping("/saveExpense")
-    public Expense saveExpense(@RequestBody Expense expense) {
+    public Expense saveExpense(@Valid @RequestBody Expense expense) {
         return expenseService.saveExpense(expense);
     }
 
