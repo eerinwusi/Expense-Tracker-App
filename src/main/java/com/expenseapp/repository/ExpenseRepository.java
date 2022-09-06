@@ -11,4 +11,7 @@ public interface ExpenseRepository extends JpaRepository<Expense, Long> {
 
 //    The equivalent for SQL would be - SELECT * FROM tbl_expenses WHERE category=?
     Page<Expense> findByCategory(String Category, Pageable page);
+
+//    The equivalent for SQL would be - SELECT * FROM tbl_expenses WHERE name LIKE '%keyword%'
+    Page<Expense> findByNameContaining(String keyword, Pageable page);
 }
