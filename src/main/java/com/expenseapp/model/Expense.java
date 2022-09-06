@@ -7,6 +7,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
@@ -24,15 +25,17 @@ public class Expense {
     private Long id;
 
     @Column(name = "expenses_name")
-    @NotNull(message = "Expense name must not be null")
+    @NotBlank(message = "Expense name must not be blank")
     @Size(min = 3, message = "Expense name must be at least 3 characters")
     private String name;
 
     private String description;
 
     @Column(name = "expenses_amount")
+    @NotNull(message = "amount must not be null")
     private BigDecimal amount;
 
+    @NotBlank(message = "category must not be blank")
     private String category;
 
     private Date date;
