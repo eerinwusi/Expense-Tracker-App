@@ -47,4 +47,9 @@ public class ExpenseController {
     public Expense updateExpense(@RequestBody Expense expense, @PathVariable("id") Long id) {
         return expenseService.updateExpenseDetails(expense, id);
     }
+
+    @GetMapping("/expenses/category")
+    public List<Expense> getExpenseByCategory(@RequestParam String category, Pageable page) {
+        return expenseService.readByCategory(category, page);
+    }
 }
