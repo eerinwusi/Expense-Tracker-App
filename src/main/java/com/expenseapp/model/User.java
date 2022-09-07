@@ -1,5 +1,6 @@
 package com.expenseapp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,38 +8,27 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import java.math.BigDecimal;
 import java.sql.Timestamp;
-import java.util.Date;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "users")
-public class Expense {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "expenses_name")
-    @NotBlank(message = "Expense name must not be blank")
-    @Size(min = 3, message = "Expense name must be at least 3 characters")
     private String name;
 
-    private String description;
+    @Column(unique = true)
+    private String email;
 
-    @Column(name = "expenses_amount")
-    @NotNull(message = "amount must not be null")
-    private BigDecimal amount;
+    @JsonIgnore
+    private String password;
 
-    @NotBlank(message = "category must not be blank")
-    private String category;
-
-    private Date date;
+    private Long age;
 
     @Column(name = "created_at", nullable = false, updatable = false)
     @CreationTimestamp
