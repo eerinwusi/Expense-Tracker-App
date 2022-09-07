@@ -1,5 +1,6 @@
 package com.expenseapp.service;
 
+import com.expenseapp.exceptions.ItemAlreadyExistsException;
 import com.expenseapp.model.User;
 import com.expenseapp.model.UserModel;
 import com.expenseapp.repository.UserRepository;
@@ -15,6 +16,9 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public User createUser(UserModel user) {
+        if (userRepository.existsByEmail(user.getEmail())) {
+            throw new ItemAlreadyExistsException("User is already registered with email "+user.getEmail());
+        }
         User newUser = new User();
         BeanUtils.copyProperties(user, newUser);
         return userRepository.save(newUser);
