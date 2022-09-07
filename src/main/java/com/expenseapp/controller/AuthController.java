@@ -32,12 +32,8 @@ public class AuthController {
     @Autowired
     private CustomUserDetailsService userDetailsService;
 
-    AuthenticationManager authenticationManager = new AuthenticationManager() {
-        @Override
-        public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-            return null;
-        }
-    };
+    @Autowired
+    private AuthenticationManager authenticationManager;
 
     @Autowired
     private UserService userService;
