@@ -16,7 +16,10 @@ import java.util.Optional;
 public class ExpenseServiceImpl implements ExpenseService {
 
     @Autowired
-    ExpenseRepository expenseRepository;
+    private ExpenseRepository expenseRepository;
+
+    @Autowired
+    private UserService userService;
 
     @Override
     public Page<Expense> getAllExpenses(Pageable page) {
@@ -46,11 +49,13 @@ public class ExpenseServiceImpl implements ExpenseService {
 
     @Override
     public Expense saveExpense(Expense expense) {
+        expense.setUser(userService.getLoggedInUser());
         return expenseRepository.save(expense);
     }
 
     @Override
     public Expense updateExpenseDetails(Expense expense, Long id) {
+
         Expense existingExpense = getExpenseById(id);
 
         existingExpense.setName(expense.getName() != null ? expense.getName() : existingExpense.getName());
