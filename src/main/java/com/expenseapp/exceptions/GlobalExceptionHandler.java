@@ -21,8 +21,8 @@ import java.util.stream.Collectors;
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
 //    handles exceptions such as inputing an id that does not exist in the db.
-    @ExceptionHandler(ExpenseNotFoundException.class)
-    public ResponseEntity<ErrorObject> handleExpenseNotFondException(ExpenseNotFoundException ex, WebRequest request) {
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<ErrorObject> handleExpenseNotFondException(ResourceNotFoundException ex, WebRequest request) {
 
         ErrorObject errorObject = new ErrorObject();
 

@@ -1,6 +1,7 @@
 package com.expenseapp.service;
 
 import com.expenseapp.exceptions.ItemAlreadyExistsException;
+import com.expenseapp.exceptions.ResourceNotFoundException;
 import com.expenseapp.model.User;
 import com.expenseapp.model.UserModel;
 import com.expenseapp.repository.UserRepository;
@@ -22,5 +23,10 @@ public class UserServiceImpl implements UserService{
         User newUser = new User();
         BeanUtils.copyProperties(user, newUser);
         return userRepository.save(newUser);
+    }
+
+    @Override
+    public User readUser(Long id) {
+        return userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found for the id "+id));
     }
 }

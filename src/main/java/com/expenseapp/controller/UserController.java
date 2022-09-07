@@ -6,9 +6,7 @@ import com.expenseapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -22,4 +20,13 @@ public class UserController {
     public ResponseEntity<User> save(@Valid @RequestBody UserModel user) {
         return new ResponseEntity<User>(userService.createUser(user), HttpStatus.CREATED);
     }
+
+//    no need to create rest endpoint to read al users since a user should not be allowed to see all users only
+//    admin should have that access.
+
+    @GetMapping("/users/{id}")
+    public ResponseEntity<User> getUser(@PathVariable Long id) {
+        return new ResponseEntity<User>(userService.readUser(id), HttpStatus.OK);
+    }
+
 }

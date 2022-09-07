@@ -1,6 +1,6 @@
 package com.expenseapp.service;
 
-import com.expenseapp.exceptions.ExpenseNotFoundException;
+import com.expenseapp.exceptions.ResourceNotFoundException;
 import com.expenseapp.model.Expense;
 import com.expenseapp.repository.ExpenseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +29,7 @@ public class ExpenseServiceImpl implements ExpenseService {
         if (expense.isPresent()) {
             return expense.get();
         }
-        throw new ExpenseNotFoundException("The expense object is not found with id "+id);
+        throw new ResourceNotFoundException("The expense object is not found with id "+id);
     }
 
     @Override
@@ -39,7 +39,7 @@ public class ExpenseServiceImpl implements ExpenseService {
             expenseRepository.deleteById(id);
         }
         else {
-            throw new ExpenseNotFoundException("The expense object with id "+id +" " + "cannot be found");
+            throw new ResourceNotFoundException("The expense object with id "+id +" " + "cannot be found");
         }
 
     }
